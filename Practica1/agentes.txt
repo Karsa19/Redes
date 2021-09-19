@@ -1,0 +1,4 @@
+IP: 21424.232233
+Version SNMP: 3
+Comunidad: fefe
+Interfaz: dwqd

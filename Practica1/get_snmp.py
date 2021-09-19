@@ -1,6 +1,5 @@
 from pysnmp import hlapi
 
-
 def construct_object_types(list_of_oids):
     object_types = []
     for oid in list_of_oids:

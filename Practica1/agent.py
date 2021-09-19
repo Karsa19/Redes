@@ -4,7 +4,7 @@ class Agent:
     global f
     f = open ('agentes.txt','w')
 
-    def __init__(self, ip, v_snmp, comunidad, interfaz):
+    def __init__(self, ip='', v_snmp='', comunidad='', interfaz=''):
         self.ip = ip
         self.v_snmp = v_snmp
         self.comunidad = comunidad
@@ -34,11 +34,13 @@ class Agent:
     def get_interfaz(self):
         return self.interfaz
 
-    def str_agent(self):
-        print("IP: " + self.get_ip())
-        print("Version SNMP: " + self.get_v_snmp())
-        print("Comunidad: " + self.get_comunidad())
-        print("Interfaz: " + self.get_interfaz())
+    def str_agent(self, a):
+        f.write("IP: " + str(a.get_ip())+"\n")
+        f.write("Version SNMP: " + str(a.get_v_snmp())+"\n")
+        f.write("Comunidad: " + str(a.get_comunidad())+"\n")
+        f.write("Interfaz: " + str(a.get_interfaz())+"\n")
+        f.close()
+
 
 
     def delete_Agent(self, ip):
@@ -56,8 +58,8 @@ class Agent:
         interfaz= input()
 
         agt= Agent(ip,snmp,comunidad,interfaz)
-        f.write(agt.str_agent())
-        f.close()
+        agt.str_agent(agt)
+        
 
     def read_file(self):
         pass
