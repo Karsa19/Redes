@@ -1,9 +1,8 @@
-from get_snmp import Snmp
+from snmp import *
 from agent import Agent
 import plot_rrd
 
 agente = Agent()
-s = Snmp()
 r=0
 while r!=5:
     print("<-------MONITOREO SNMP------> \n MENU \n1.Inicio \n2.Agregar dispositivo \n3.Eliminar dispositivo \n4.Reporte \n5.Salir")

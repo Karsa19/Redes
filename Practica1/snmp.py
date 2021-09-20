@@ -1,17 +1,13 @@
 from pysnmp import hlapi
 
-class Snmp:
 
-    def __init__(self):
-        pass
+def construct_object_types( list_of_oids):
+    object_types = []
+    for oid in list_of_oids:
+        object_types.append(hlapi.ObjectType(hlapi.ObjectIdentity(oid)))
+    return object_types
 
-    def construct_object_types(list_of_oids):
-        object_types = []
-        for oid in list_of_oids:
-            object_types.append(hlapi.ObjectType(hlapi.ObjectIdentity(oid)))
-        return object_types
-
-    def cast(value):
+def cast(value):
         try:
             return int(value)
         except (ValueError, TypeError):
@@ -24,7 +20,7 @@ class Snmp:
                     pass
         return value
 
-    def fetch(handler, count):
+def fetch(handler, count):
         result = []
         for i in range(count):
             try:
@@ -42,12 +38,12 @@ class Snmp:
 
 
 def get(target, oids, credentials, port=161, engine=hlapi.SnmpEngine(), context=hlapi.ContextData()):
-    handler = hlapi.getCmd(
-        engine,
-        credentials,
-        hlapi.UdpTransportTarget((target, port)),
-        context,
-        *construct_object_types(oids)
-    )
-    return fetch(handler, 1)[0]
-
+        handler = hlapi.getCmd(
+            engine,
+            credentials,
+            hlapi.UdpTransportTarget((target, port)),
+            context,
+            *construct_object_types(oids)
+        )
+        return fetch(handler, 1)[0]
+    

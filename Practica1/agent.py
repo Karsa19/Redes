@@ -62,7 +62,7 @@ class Agent:
         
 
     def read_file(self):
-        pass
+        ip = f.readline().split(' ')
 
         
         

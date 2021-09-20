@@ -1,6 +1,6 @@
 from datetime import date
-import get_snmp
-import agent
+from snmp import *
+from agent import Agent
 
 def dias_nacimiento(cumple):
     pass
